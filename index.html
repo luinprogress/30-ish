@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>30-ish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--pri:#1F2224;--sage:#68747A;--bg:#F7F7F5;--ink:#1F2224;--acc:#D9DEE0;--card:#FFFFFF;--line:#D9DEE0;--mut:#68747A;--onpri:#FFFFFF;--hi:#1F2224;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1F2224;--ink:#F7F7F5;--card:#2A2E31;--line:#3B4247;--mut:#9AA5AB;--pri:#68747A;--acc:#3B4247;--hi:#D9DEE0}}
+:root[data-theme="dark"]{--bg:#1F2224;--ink:#F7F7F5;--card:#2A2E31;--line:#3B4247;--mut:#9AA5AB;--pri:#68747A;--acc:#3B4247;--hi:#D9DEE0}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 "Noto Sans TC",system-ui,sans-serif;padding-bottom:84px}
+main{max-width:640px;margin:0 auto;padding:18px 16px}
+h1{font-size:22px;margin:4px 0 14px;font-weight:700}h2{font-size:17px;margin:0 0 10px;font-weight:700}
+b,.b{font-weight:700}
+.view{display:none}.view.on{display:block}
+.hero{background:var(--pri);color:var(--onpri);border-radius:18px;padding:22px 20px;margin-bottom:14px;cursor:pointer}
+.hero p{font-size:19px;font-weight:700;margin:0 0 6px;line-height:1.55}.hero small{opacity:.65}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;font:inherit;color:var(--ink);cursor:pointer}.st.on{background:var(--acc);box-shadow:inset 0 0 0 2px var(--hi)}.btn:disabled{opacity:.35;cursor:default}
+.st b{display:block;font-size:30px;line-height:1.2;color:var(--hi)}.st span{font-size:13px}.st i{display:block;font-size:12px;color:var(--mut);font-style:normal}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.wk{display:flex;justify-content:space-between;margin-bottom:10px}
+.d{width:40px;text-align:center;font-size:12px;color:var(--mut)}
+.d u{display:block;width:34px;height:34px;margin:0 auto 2px;border-radius:50%;border:1.5px solid var(--line);text-decoration:none;line-height:31px;font-size:15px;color:var(--ink)}
+.d.ok u,.cd.ok u{background:var(--pri);border-color:var(--pri);color:var(--onpri);font-weight:700}.d.td u,.cd.td u{border-color:var(--hi);border-width:2px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px 0;text-align:center}.cal>span{font-size:12px}.cd{position:relative}.cd u{display:block;width:34px;height:34px;margin:0 auto;border-radius:50%;border:1.5px solid transparent;text-decoration:none;line-height:31px;font-size:14px}.cd sup{position:absolute;top:-6px;left:calc(50% + 10px);font-size:10px;font-weight:700;color:var(--hi)}
+.btn{background:var(--pri);color:var(--onpri);border:0;border-radius:12px;padding:12px 18px;font:700 16px "Noto Sans TC",sans-serif;cursor:pointer;min-height:46px}
+.btn.wide{width:100%;margin-top:12px}.btn.sec{background:transparent;color:var(--hi);border:1.5px solid var(--sage)}
+.btn.sm{padding:6px 12px;min-height:36px;font-size:14px}.btn.dng{background:transparent;color:#a4483c;border:1.5px solid #d9aaa2}
+input,select,textarea{width:100%;font:400 16px "Noto Sans TC",sans-serif;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--sage);outline-offset:1px}
+.mut{color:var(--mut);font-size:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:4px 14px;font:400 14px "Noto Sans TC",sans-serif;cursor:pointer}.chip.on{background:var(--acc);border-color:var(--sage);font-weight:700;color:var(--ink)}
+.row{display:flex;gap:8px;align-items:center}.row>*{flex:1}.row>.fx{flex:none}
+.menu .top{display:flex;justify-content:space-between;gap:8px;align-items:start}.menu .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{display:inline-block;background:var(--acc);color:var(--ink);border-radius:10px;padding:0 10px;font-size:12px;font-weight:700}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;background:none;border:0;padding:12px 4px;font:500 15px "Noto Sans TC",sans-serif;color:var(--mut);cursor:pointer}nav button.on{color:var(--hi);font-weight:700;box-shadow:inset 0 3px var(--hi)}
+.ov{position:fixed;inset:0;background:var(--bg);z-index:10;overflow:auto;display:none;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px))}.ov.on{display:block}
+.ov>div{max-width:640px;margin:0 auto}
+.fr{display:grid;grid-template-columns:1fr 70px 70px 36px;gap:6px;margin-bottom:6px;align-items:center}.fr input{padding:8px}
+.fh{font-size:12px;color:var(--mut)}.xb{background:none;border:0;font-size:20px;color:#a4483c;cursor:pointer}
+.tm{text-align:center;min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.big{font-size:clamp(76px,26vw,132px);font-weight:700;line-height:1;color:var(--hi)}
+.bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--hi);width:0;transition:width .3s}
+.ov.rest{background:var(--acc)}.ov.rest *{color:var(--ink)}.ov.rest .big{color:var(--ink)}.ov.rest .bar{background:rgba(128,128,128,.25)}.ov.rest .bar i{background:var(--ink)}.ov.rest .chip{background:transparent}.ov.rest .chip.on{background:var(--card)}.nx{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:700;font-size:18px}
+.tm .chips{justify-content:center}.tm h2{font-size:26px}
+.lg{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.lg:last-child{border:0}.pb{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 12px}.pb i{display:block;height:100%;background:var(--sage)}
+.brand{display:flex;align-items:center;gap:12px;margin:2px 0 16px}.brand b{font-size:26px;line-height:1.1;display:block}.brand small{color:var(--mut);font-size:13px}.dg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;display:none;align-items:center;justify-content:center;padding:20px}.dg.on{display:flex}.dg>div{background:var(--card);color:var(--ink);border-radius:16px;padding:20px;max-width:380px;width:100%}
+.lk{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}.lg{align-items:center;gap:8px}.dg>div{max-height:90vh;overflow:auto}.sf label{display:block;margin-top:12px;font-size:14px;color:var(--mut)}
+.ex{padding:8px 0;border-top:1px solid var(--line);border-radius:6px}.r1{display:flex;gap:4px;align-items:center}.r1 input{flex:1;min-width:0}.r2{display:flex;gap:10px;margin:6px 0 0 32px}.r2 label{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--mut);flex:1}.r2 input{width:100%;min-width:0;padding:8px}
+.hd{touch-action:none;cursor:grab;background:none;border:0;font-size:22px;color:var(--mut);width:28px;padding:0;user-select:none;-webkit-user-select:none}.xb{padding:6px 8px}.xb[data-cp]{color:var(--mut)}
+.ex.drag{opacity:.45;background:var(--acc)}.ex-t{box-shadow:0 -2px 0 var(--hi)}.ex-b{box-shadow:0 2px 0 var(--hi)}.sec-over{outline:2px dashed var(--sage);outline-offset:2px}
+.empty{text-align:center;color:var(--mut);padding:24px 0}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style></head><body>
+<main>
+<section class="view on" id="v-home"></section>
+<section class="view" id="v-menus"></section>
+<section class="view" id="v-goal"></section>
+</main>
+<nav><button data-v="home" class="on">主頁</button><button data-v="menus">菜單</button><button data-v="goal">目標與備份</button></nav>
+<div class="dg" id="dg"></div>
+<div class="ov" id="ov-form"><div id="form"></div></div>
+<div class="ov" id="ov-timer"><div id="timer"></div></div>
+
+<script>
+const K='wuxiong-workout-v1',PH=[['warm','暖身',5],['main','主訓練',20],['cool','收操',5]];
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+const Q={
+ start:['先動起來，剩下的身體會幫你。','今天只要開始，就已經贏過昨天的猶豫。','30 分鐘，給自己一個交代。','不用完美，只要出現。'],
+ mid:['你正在把運動變成習慣，這很了不起。','一次一次累積，身體都記得。','穩穩地做，比用力地做更久。','今天的你，比想像中更有力量。'],
+ reach:['本週目標達成！你說到做到。','這就是自律的樣子，太棒了！','你已經成為會持續運動的人了。'],
+ early:['有動就很好！你已經比沒開始的自己更棒了。','動了就算數，不用完美。','願意開始，就是最難的那一步。','能動多少算多少，身體都記得。'],
+ done:['完成了！你剛剛把承諾兌現給自己。','辛苦了，這 30 分鐘全部都算數。','身體謝謝你，明天也一起加油。','又一次，你做到了。']};
+function dlg(msg,ok,cancel){return new Promise(r=>{$('#dg').innerHTML=`<div role="dialog"><p style="margin:0 0 16px;font-size:17px;line-height:1.6">${msg}</p><div class="row">${cancel?`<button class="btn sec" id="dgn">${cancel}</button>`:''}<button class="btn" id="dgy">${ok||'好'}</button></div></div>`;$('#dg').classList.add('on');const c=v=>{$('#dg').classList.remove('on');r(v)};$('#dgy').onclick=()=>c(true);if(cancel)$('#dgn').onclick=()=>c(false)})}
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function seed(){const w=(n,w,r)=>({n,w,r});return{goal:3,logs:[],menus:[{id:uid(),name:'全身基礎 30 分',tag:'全身',sec:{
+ warm:[w('原地踏步',60,15),w('肩頸繞環',60,15),w('貓牛式',60,15),w('開合跳',60,15)],
+ main:['深蹲','膝蓋伏地挺身','後弓箭步','超人式','棒式','臀橋','登山者','仰臥抬腿','椅子撐體','側棒式'].map(n=>w(n,90,30)),
+ cool:[w('兒童式',50,10),w('大腿前側伸展',50,10),w('胸口開展',50,10),w('坐姿前彎',50,10),w('腹式呼吸',50,10)]}}]}}
+function load(){try{const d=JSON.parse(localStorage.getItem(K));if(d&&Array.isArray(d.menus))return d}catch(e){}return seed()}
+let S=load();const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const secTot=l=>l.reduce((a,e)=>a+(+e.w||0)+(+e.r||0),0),menuTot=m=>PH.reduce((a,[k])=>a+secTot(m.sec[k]),0);
+const dk=d=>{d=new Date(d);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+function monday(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d}
+function counts(){const m=monday().getTime(),n=new Date();return{w:S.logs.filter(l=>l.ts>=m).length,m:S.logs.filter(l=>{const d=new Date(l.ts);return d.getMonth()==n.getMonth()&&d.getFullYear()==n.getFullYear()}).length,t:S.logs.length}}
+let quote='',selMenu='',qs='',qt='',rng='w',mOff=0;
+function newQuote(){const c=counts();quote=pick(c.w>=S.goal?Q.reach:c.w==0?Q.start:Q.mid)}
+const WD=[...'一二三四五六日'];
+function statsH(){const c=counts();return [['w',c.w,'本週','目標 '+S.goal+' 次'],['m',c.m,'本月',''],['t',c.t,'總次數','']].map(([r,v,l,x])=>`<button class="st${rng==r?' on':''}" data-r="${r}" aria-pressed="${rng==r}"><b>${v}</b><span>${l}</span>${x?`<i>${x}</i>`:''}</button>`).join('')}
+function panelW(){const mon=monday(),days=new Set(S.logs.map(l=>dk(l.ts))),td=dk(Date.now()),end=new Date(mon);end.setDate(end.getDate()+6);
+ const wk=WD.map((t,i)=>{const d=new Date(mon);d.setDate(d.getDate()+i);const k=dk(d);return`<div class="d${days.has(k)?' ok':''}${k==td?' td':''}"><u>${d.getDate()}</u>${t}</div>`}).join('');
+ return`<h2>本週　${mon.getMonth()+1}/${mon.getDate()} – ${end.getMonth()+1}/${end.getDate()}</h2><div class="wk">${wk}</div><p class="mut" style="margin:0">已完成 ${counts().w} 次・目標 ${S.goal} 次</p>`}
+function panelM(){const n=new Date(),b=new Date(n.getFullYear(),n.getMonth()+mOff,1),y=b.getFullYear(),mo=b.getMonth(),dim=new Date(y,mo+1,0).getDate(),lead=(b.getDay()+6)%7,td=dk(Date.now()),cnt={};
+ S.logs.forEach(l=>{const d=new Date(l.ts);if(d.getFullYear()==y&&d.getMonth()==mo)cnt[d.getDate()]=(cnt[d.getDate()]||0)+1});
+ const tot=Object.values(cnt).reduce((a,x)=>a+x,0);let cells='';for(let i=0;i<lead;i++)cells+='<i></i>';
+ for(let d=1;d<=dim;d++)cells+=`<div class="cd${cnt[d]?' ok':''}${y+'-'+(mo+1)+'-'+d==td?' td':''}"><u>${d}</u>${cnt[d]>1?'<sup>×'+cnt[d]+'</sup>':''}</div>`;
+ return`<div class="row" style="margin-bottom:10px"><button class="btn sec sm fx" data-mo="-1" aria-label="上個月">‹</button><h2 style="margin:0;text-align:center">${y} 年 ${mo+1} 月</h2><button class="btn sec sm fx" data-mo="1" aria-label="下個月"${mOff>=0?' disabled':''}>›</button></div><div class="cal">${WD.map(x=>`<span class="mut">${x}</span>`).join('')}${cells}</div><p class="mut" style="margin:10px 0 0;text-align:center">運動 ${Object.keys(cnt).length} 天・共 ${tot} 次</p>`}
+function panelT(){if(!S.logs.length)return'<div class="empty">完成第一次運動後，這裡會顯示每個月的次數。</div>';
+ const m={};S.logs.forEach(l=>{const d=new Date(l.ts),k=d.getFullYear()*12+d.getMonth();m[k]=(m[k]||0)+1});
+ const n=new Date(),cur=n.getFullYear()*12+n.getMonth(),first=Math.min(...Object.keys(m).map(Number)),tgt=S.goal*4;let rows='';
+ for(let k=cur;k>=Math.max(first,cur-11);k--){const c=m[k]||0;rows+=`<div style="margin-bottom:12px"><div class="lg" style="border:0;padding:0"><span>${Math.floor(k/12)} 年 ${k%12+1} 月</span><span><b>${c}</b> 次${c>=tgt?' 🎉':''}</span></div><div class="pb" style="margin:4px 0 0"><i style="width:${Math.min(100,Math.round(c/tgt*100))}%"></i></div></div>`}
+ return`<h2>每月運動次數</h2>${rows}<p class="mut" style="margin:0">進度條滿格 = 每週 ${S.goal} 次 × 4 週 = ${tgt} 次</p>`}
+const panel=()=>rng=='w'?panelW():rng=='m'?panelM():panelT();
+function home(){
+ if(!quote)newQuote();const c=counts(),mon=monday(),days=new Set(S.logs.map(l=>dk(l.ts))),td=dk(Date.now());
+ if(!S.menus.find(m=>m.id==selMenu))selMenu=S.menus[0]?.id||'';
+ const m=S.menus.find(m=>m.id==selMenu);
+ $('#v-home').innerHTML=`<div class="brand"><svg width="48" height="48" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--pri)"/><text x="22" y="26" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="Noto Sans TC,sans-serif">30</text><path d="M10 34q4.2-6 8.4 0t8.4 0t8.4 0" stroke="#D9DEE0" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg><div><b>30-ish</b><small>差不多 30 分鐘，動就對了</small></div></div>
+ <div class="hero" id="hero" role="button" tabindex="0"><p>${esc(quote)}</p><small>點一下換一句</small></div>
+ <div class="stats" id="stats">${statsH()}</div><div class="card" id="panel">${panel()}</div>
+ <div class="card">
+ ${S.menus.length?`<h2>今天做哪一份</h2><select id="pick">${S.menus.map(x=>`<option value="${x.id}"${x.id==selMenu?' selected':''}>${esc(x.name)}</option>`).join('')}</select>
+ <p class="mut" style="margin:8px 0 0">${m?PH.map(([k,n])=>n+' '+Math.round(secTot(m.sec[k])/60)+' 分').join('　'):''}</p>
+ <button class="btn wide" id="go">開始運動</button>`:`<div class="empty">還沒有菜單，先到「菜單」新增一份吧。</div>`}</div>`}
+const enc=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+function shareMenu(m){copyOut(`【30-ish 菜單】${m.name}（約 ${Math.round(menuTot(m)/60)} 分鐘）\n在 30-ish 的「菜單」頁按「匯入」，貼上整段文字即可。\n30ISH1:${enc({v:1,name:m.name,tag:m.tag||'',sec:m.sec})}`,'「'+esc(m.name)+'」的分享文字')}
+async function copyOut(txt,label){let ok=false;try{await navigator.clipboard.writeText(txt);ok=true}catch(e){}
+ if(ok)return dlg('已複製'+label+'！直接貼給朋友就可以了。');
+ $('#dg').innerHTML=`<div role="dialog"><p id="cpm" style="margin:0 0 10px">無法自動複製，請長按下方文字全選後複製：</p><textarea id="cpx" rows="6" readonly>${esc(txt)}</textarea><button class="btn wide" id="dgy">完成</button></div>`;$('#dg').classList.add('on');$('#dgy').onclick=()=>$('#dg').classList.remove('on');
+ const t=$('#cpx');t.focus();t.select();try{if(document.execCommand('copy'))$('#cpm').textContent='已複製'+label+'！直接貼給朋友就可以了。'}catch(e){}}
+function parseMenu(txt){const i=txt.indexOf('30ISH1:');if(i<0)return'找不到菜單代碼，請確認有貼上完整的分享文字。';let o;
+ try{o=JSON.parse(decodeURIComponent(escape(atob(txt.slice(i+7).replace(/[^A-Za-z0-9+/=]/g,'')))))}catch(e){return'菜單代碼無法讀取，可能少貼了一部分，請重新複製完整文字。'}
+ if(!o||typeof o.name!='string'||!o.sec)return'菜單內容格式不正確。';
+ const num=v=>Math.min(3600,Math.max(0,Math.round(+v)||0)),sec={};
+ for(const[k]of PH){const a=Array.isArray(o.sec[k])?o.sec[k]:[];sec[k]=a.slice(0,30).map(e=>({n:String((e&&e.n)||'').slice(0,40),w:num(e&&e.w),r:num(e&&e.r)})).filter(e=>e.n)}
+ if(!PH.some(([k])=>sec[k].length))return'這份菜單裡沒有動作。';
+ let name=o.name.slice(0,40)||'匯入的菜單';if(S.menus.some(m=>m.name==name))name+='（匯入）';
+ return{id:uid(),name,tag:String(o.tag||'').slice(0,12),sec}}
+function openImp(){$('#dg').innerHTML=`<div role="dialog"><h2>匯入菜單</h2><p class="mut" style="margin:0 0 10px">貼上朋友分享的整段文字</p><textarea id="impx" rows="5" placeholder="【30-ish 菜單】…"></textarea><div class="row" style="margin-top:12px"><button class="btn sec" id="impn">取消</button><button class="btn" id="impy">匯入</button></div><p id="impe" style="margin:8px 0 0;color:#a4483c"></p></div>`;$('#dg').classList.add('on');
+ $('#impn').onclick=()=>$('#dg').classList.remove('on');
+ $('#impy').onclick=()=>{const r=parseMenu($('#impx').value);if(typeof r=='string')return $('#impe').textContent=r;S.menus.push(r);save();go('menus');dlg('已加入「'+esc(r.name)+'」！')}}
+function menus(){
+ const tags=[...new Set(S.menus.map(m=>m.tag).filter(Boolean))];
+ $('#v-menus').innerHTML=`<div class="row" style="margin-bottom:6px"><h1 style="margin:0">我的菜單</h1><button class="btn sec fx" id="imp">匯入</button><button class="btn fx" id="add">＋ 新增</button></div>
+ <input id="qs" type="search" placeholder="搜尋菜單或動作名稱" value="${esc(qs)}">
+ <div class="chips" id="tags">${['',...tags].map(t=>`<button class="chip${t==qt?' on':''}" data-t="${esc(t)}">${t?esc(t):'全部'}</button>`).join('')}</div><div id="list"></div>`;list()}
+function list(){
+ const q=qs.trim().toLowerCase();
+ const r=S.menus.filter(m=>(!qt||m.tag==qt)&&(!q||m.name.toLowerCase().includes(q)||PH.some(([k])=>m.sec[k].some(e=>e.n.toLowerCase().includes(q)))));
+ $('#list').innerHTML=r.map(m=>`<div class="card menu" data-id="${m.id}"><div class="top"><div><b>${esc(m.name)}</b> ${m.tag?`<span class="tag">${esc(m.tag)}</span>`:''}</div><span class="mut">${Math.round(menuTot(m)/60)} 分</span></div>
+ <p class="mut" style="margin:6px 0 0">${PH.map(([k,n])=>`${n}：${m.sec[k].map(e=>esc(e.n)).join('、')||'—'}`).join('<br>')}</p>
+ <div class="acts"><button class="btn sm" data-a="run">開始</button><button class="btn sm sec" data-a="edit">編輯</button><button class="btn sm sec" data-a="dup">複製</button><button class="btn sm sec" data-a="share">分享</button><button class="btn sm dng" data-a="del">刪除</button></div></div>`).join('')||'<div class="empty">找不到符合的菜單。</div>'}
+function stForm(id){const l=S.logs.find(x=>x.id==id)||{};
+ const ch=(k,n)=>Array.from({length:n},(_,i)=>`<button class="chip${l[k]==i+1?' on':''}" data-st="${k}:${i+1}" data-lid="${id}">${i+1}</button>`).join('');
+ return`<div class="sf" data-sf="${id}" style="text-align:left"><label style="margin-top:0">平均心率（次／分）</label><input type="number" inputmode="numeric" min="30" max="230" data-hr="${id}" value="${l.hr||''}" placeholder="選填">
+ <label>動作品質　1 亂掉・3 可以完成・5 穩定漂亮</label><div class="chips">${ch('q',5)}</div>
+ <label>RPE　這堂課有多難（1–10）</label><div class="chips">${ch('rpe',10)}</div></div>`}
+const logTxt=l=>[l.hr?'心率 '+l.hr:'',l.q?'品質 '+l.q:'',l.rpe?'RPE '+l.rpe:''].filter(Boolean).join('・');
+const avg=(k,a)=>{const v=a.map(l=>l[k]).filter(x=>x>0);return v.length?v.reduce((x,y)=>x+y,0)/v.length:0};
+function openSt(id){const l=S.logs.find(x=>x.id==id);if(!l)return;$('#dg').innerHTML=`<div role="dialog"><h2>${new Date(l.ts).toLocaleDateString('zh-TW',{month:'numeric',day:'numeric'})}　${esc(l.name)}</h2>${stForm(id)}<button class="btn wide" id="dgy">完成</button></div>`;$('#dg').classList.add('on');$('#dgy').onclick=()=>{$('#dg').classList.remove('on');goal()}}
+function goal(){
+ const c=counts(),p=Math.min(100,Math.round(c.w/S.goal*100));
+ const logs=[...S.logs].sort((a,b)=>b.ts-a.ts).slice(0,15);
+ $('#v-goal').innerHTML=`<h1>訓練目標</h1>
+ <div class="card"><h2>每週目標：${S.goal} 次</h2><div class="pb"><i style="width:${p}%"></i></div><p class="mut" style="margin:0 0 12px">本週已完成 ${c.w} 次${c.w>=S.goal?'，目標達成 🎉':'，還差 '+(S.goal-c.w)+' 次'}</p>
+ <div class="row"><button class="btn sec" id="gm">－</button><button class="btn sec" id="gp">＋</button></div></div>
+ ${(()=>{const r=S.logs.filter(l=>l.ts>=Date.now()-42*864e5);if(!r.some(l=>l.q||l.rpe||l.hr))return'';const f=(k,d)=>avg(k,r)?avg(k,r).toFixed(d):'–';return`<div class="card"><h2>最近 6 週平均</h2><div class="stats" style="margin:0"><div class="st" style="cursor:default"><b>${f('q',1)}</b><span>動作品質</span></div><div class="st" style="cursor:default"><b>${f('rpe',1)}</b><span>RPE</span></div><div class="st" style="cursor:default"><b>${f('hr',0)}</b><span>心率</span></div></div></div>`})()}<div class="card"><h2>最近紀錄（點一下可補記狀態）</h2>${logs.map(l=>`<div class="lg"><button class="lk" data-edit="${l.id}">${new Date(l.ts).toLocaleDateString('zh-TW',{month:'numeric',day:'numeric',weekday:'short'})}　${esc(l.name)}<br><small class="mut">${logTxt(l)||'點一下記錄心率、品質、RPE'}</small></button><span><span class="mut">${l.mins} 分</span> <button class="xb" data-l="${l.id}" aria-label="刪除紀錄">×</button></span></div>`).join('')||'<div class="empty">完成第一次運動後，紀錄會出現在這裡。</div>'}</div>
+ <div class="card"><h2>備份與還原</h2><p class="mut" style="margin-top:0">換手機或清除瀏覽器資料前，請先備份。</p>
+ <div class="row"><button class="btn" id="cp">複製備份</button><button class="btn sec" id="im">匯入備份</button></div>
+ <textarea id="bk" rows="4" placeholder="按「複製備份」後，把文字貼到備忘錄存起來。要還原時，把備份文字貼在這裡，再按「匯入備份」。" style="margin-top:10px"></textarea>
+ <input type="file" id="fi" accept=".json,application/json" hidden></div>`}
+function go(v){document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id=='v-'+v));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v==v));({home,menus,goal})[v]();scrollTo(0,0)}
+const cur=()=>document.querySelector('.view.on').id.slice(2);
+/* form */
+let D=null;
+function openForm(m){D=m?JSON.parse(JSON.stringify(m)):{id:uid(),name:'',tag:'',sec:{warm:[],main:[],cool:[]}};D._new=!m;renderForm();$('#ov-form').classList.add('on')}
+function renderForm(){const sc0=$('#ov-form').scrollTop;
+ $('#form').innerHTML=`<h1>${D._new?'新增菜單':'編輯菜單'}</h1>
+ <label class="mut">菜單名稱</label><input id="fn" value="${esc(D.name)}" placeholder="例：全身基礎 30 分">
+ <label class="mut">標籤（選填，方便篩選）</label><input id="ft" value="${esc(D.tag)}" placeholder="例：全身、下半身、核心">
+ <p class="mut" style="margin:10px 0 0">按住 ⠿ 拖曳可調整順序（也能拖到其他區段），⧉ 可複製動作。</p>
+ ${PH.map(([k,n,t])=>`<div class="card" data-sec="${k}" style="margin-top:14px"><h2>${n}・目標 ${t} 分鐘</h2>${D.sec[k].map((e,i)=>`<div class="ex" data-p="${k}" data-i="${i}"><div class="r1"><button class="hd" aria-label="按住拖曳排序">⠿</button><input data-k="n" data-p="${k}" data-i="${i}" value="${esc(e.n)}" placeholder="動作名稱"><button class="xb" data-cp="${k}:${i}" aria-label="複製動作">⧉</button><button class="xb" data-rm="${k}:${i}" aria-label="刪除動作">×</button></div><div class="r2"><label>持續<input type="number" inputmode="numeric" min="0" data-k="w" data-p="${k}" data-i="${i}" value="${e.w}">秒</label><label>休息<input type="number" inputmode="numeric" min="0" data-k="r" data-p="${k}" data-i="${i}" value="${e.r}">秒</label></div></div>`).join('')}
+ <button class="btn sec sm" data-addrow="${k}">＋ 新增動作</button> <span class="mut" data-tot="${k}"></span></div>`).join('')}
+ <div class="row" style="margin-top:14px"><button class="btn sec" id="fc">取消</button><button class="btn" id="fs">儲存</button></div>`;tots();$('#ov-form').scrollTop=sc0}
+function tots(){PH.forEach(([k,n,t])=>{const s=secTot(D.sec[k]),d=s-t*60;$(`[data-tot="${k}"]`).textContent=`共 ${fmt(s)}`+(d?`（${d>0?'超過':'少'} ${fmt(Math.abs(d))}）`:'（剛好）')})}
+/* timer */
+let T=null,AC=null,WL=null;
+function beep(f,d){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime;o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.5,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.05)}catch(e){}}
+const WAV={},TONES={go:[880,.25],rest:[520,.25],tick:[660,.12],done:[988,.5]};
+function mk(f,d){const r=22050,n=Math.floor(r*d),b=new DataView(new ArrayBuffer(44+n*2)),w=(o,t)=>[...t].forEach((c,i)=>b.setUint8(o+i,c.charCodeAt(0)));w(0,'RIFF');b.setUint32(4,36+n*2,true);w(8,'WAVEfmt ');b.setUint32(16,16,true);b.setUint16(20,1,true);b.setUint16(22,1,true);b.setUint32(24,r,true);b.setUint32(28,r*2,true);b.setUint16(32,2,true);b.setUint16(34,16,true);w(36,'data');b.setUint32(40,n*2,true);for(let i=0;i<n;i++){const e=Math.min(1,i/(r*.01),(n-i)/(r*.05));b.setInt16(44+i*2,Math.sin(2*Math.PI*f*i/r)*e*20000,true)}const u=new Uint8Array(b.buffer);let x='';for(let i=0;i<u.length;i++)x+=String.fromCharCode(u[i]);return new Audio('data:audio/wav;base64,'+btoa(x))}
+function unlock(){for(const k in TONES){try{if(!WAV[k])WAV[k]=mk(...TONES[k]);const a=WAV[k];a.muted=true;const p=a.play();const un=()=>{a.pause();a.currentTime=0;a.muted=false};p&&p.then?p.then(un).catch(()=>{a.muted=false}):un()}catch(e){}}}
+function snd(k){if(S.snd===false)return;const a=WAV[k];try{if(!a)throw 0;a.muted=false;a.currentTime=0;const p=a.play();p&&p.catch&&p.catch(()=>beep(...TONES[k]))}catch(e){beep(...TONES[k])}}
+function say(t){if(S.snd===false)return;try{const u=new SpeechSynthesisUtterance(t);u.lang='zh-TW';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function buildSteps(m){const a=[];PH.forEach(([k])=>{m.sec[k].filter(e=>e.n&&e.w>0).forEach(e=>{a.push({p:k,n:e.n,s:+e.w,t:'w'});if(e.r>0)a.push({p:k,n:'休息',s:+e.r,t:'r'})})});while(a.length&&a[a.length-1].t=='r')a.pop();
+ a.forEach((s,i)=>{if(s.t=='r')s.nx=(a[i+1]||{}).n||''});return a}
+function startTimer(m){const st=buildSteps(m);if(!st.length)return dlg('這份菜單還沒有動作，請先編輯。');
+ unlock();try{navigator.wakeLock&&navigator.wakeLock.request('screen').then(w=>WL=w).catch(()=>{})}catch(e){}
+ T={m,st,i:0,paused:false,total:st.reduce((a,s)=>a+s.s,0)};
+ $('#timer').innerHTML=`<div class="tm"><div class="chips" id="tc"></div><div class="mut" id="tl"></div><div class="big" id="tt"></div><h2 id="tn"></h2><div class="nx" id="tx"></div><div class="bar"><i id="tb"></i></div><div class="mut" id="tel"></div>
+ <div class="row" style="margin-top:14px"><button class="btn sec" id="tp">暫停</button><button class="btn sec" id="ts">跳過</button><button class="btn sec" id="te">結束</button><button class="btn sec" id="tsd" aria-label="聲音開關">${S.snd===false?'🔇':'🔊'}</button></div></div>`;
+ $('#ov-timer').classList.add('on');$('#tt').textContent='準備';setTimeout(()=>T&&begin(),350)}
+function begin(){const s=T.st[T.i];T.end=Date.now()+s.s*1000;T.last=-1;snd(s.t=='w'?'go':'rest');say(s.t=='w'?s.n:'休息');try{navigator.vibrate&&navigator.vibrate(200)}catch(e){}paint();clearInterval(T.iv);T.iv=setInterval(tick,250)}
+function tick(){if(T.paused)return;const left=Math.max(0,Math.ceil((T.end-Date.now())/1000));if(left!=T.last){T.last=left;if(left>0&&left<=3)snd('tick');paint()}if(left<=0)next()}
+function next(){clearInterval(T.iv);T.i++;T.i>=T.st.length?finish():begin()}
+function leftSec(){return T.paused?Math.ceil(T.rem/1000):Math.max(0,Math.ceil((T.end-Date.now())/1000))}
+function elapsed(){return T.st.slice(0,T.i).reduce((a,x)=>a+x.s,0)+(T.st[T.i].s-leftSec())}
+function pauseT(){if(T.paused)return;T.rem=Math.max(0,T.end-Date.now());T.paused=true;$('#tp').textContent='繼續'}
+function resumeT(){if(!T.paused)return;T.paused=false;T.end=Date.now()+T.rem;$('#tp').textContent='暫停'}
+function paint(){if(!T)return;const s=T.st[T.i],left=leftSec();
+ $('#ov-timer').classList.toggle('rest',s.t=='r');
+ $('#tc').innerHTML=PH.map(([k,n])=>`<span class="chip${k==s.p?' on':''}">${n}</span>`).join('');
+ $('#tl').textContent=s.t=='w'?'動作':'休息一下';$('#tt').textContent=fmt(left);$('#tn').textContent=s.t=='w'?s.n:'喘口氣，喝點水';
+ const nw=T.st.slice(T.i+1).find(x=>x.t=='w'),nr=T.st[T.i+1];
+ $('#tx').textContent=s.t=='w'?(nw?'下一個動作：'+nw.n+(nr&&nr.t=='r'?'（先休息 '+nr.s+' 秒）':''):'這是最後一個動作，加油！'):(s.nx?'下一個動作：'+s.nx:'');
+ const e=elapsed();$('#tb').style.width=Math.round(e/T.total*100)+'%';$('#tel').textContent='剩餘 '+fmt(T.total-e)}
+function stopTimer(){if(T)clearInterval(T.iv);T=null;try{WL&&WL.release()}catch(e){}WL=null;$('#ov-timer').classList.remove('on','rest')}
+function finish(early){const m=T.m,mins=early?Math.max(1,Math.round(elapsed()/60)):Math.round(T.total/60);clearInterval(T.iv);const lid=uid();S.logs.push({id:lid,ts:Date.now(),menuId:m.id,name:m.name,mins,early:!!early});save();snd('done');try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}
+ const c=counts();quote='';
+ $('#timer').innerHTML=`<div class="tm"><div style="font-size:56px">🌿</div><h1>${early?'有動就很好！':'今天完成了！'}</h1><div class="hero" style="cursor:default"><p>${esc(pick(early?Q.early:Q.done))}</p></div><p>本週第 <b>${c.w}</b> 次　本月第 <b>${c.m}</b> 次</p><div class="card" style="text-align:left;margin:0"><h2>這次的狀態（選填）</h2>${stForm(lid)}</div><button class="btn wide" id="tdone">回首頁</button></div>`;
+ $('#ov-timer').classList.remove('rest');T=null;try{WL&&WL.release()}catch(e){}}
+/* events */
+document.addEventListener('click',e=>{const t=e.target,c=s=>t.closest(s);
+ if(c('nav button'))return go(c('nav button').dataset.v);
+ if(c('.st[data-r]')){rng=c('.st').dataset.r;$('#stats').innerHTML=statsH();$('#panel').innerHTML=panel();return}
+ if(t.dataset.mo){mOff=Math.min(0,mOff+ +t.dataset.mo);$('#panel').innerHTML=panel();return}
+ const se=c('[data-edit]');if(se)return openSt(se.dataset.edit);
+ const sc=c('[data-st]');if(sc){const[k,v]=sc.dataset.st.split(':'),l=S.logs.find(x=>x.id==sc.dataset.lid);if(l){l[k]==+v?delete l[k]:l[k]=+v;save();c('[data-sf]').outerHTML=stForm(l.id)}return}
+ if(c('#hero'))return(newQuote(),home());
+ if(c('#go')){const m=S.menus.find(x=>x.id==selMenu);return m&&startTimer(m)}
+ if(c('#add'))return openForm();
+ if(t.id=='imp')return openImp();
+ if(c('#tags .chip')){qt=c('.chip').dataset.t;return menus()}
+ const mc=c('.menu[data-id]'),a=t.dataset.a;
+ if(mc&&a){const m=S.menus.find(x=>x.id==mc.dataset.id);
+  if(a=='run')return startTimer(m);if(a=='share')return shareMenu(m);if(a=='edit')return openForm(m);
+  if(a=='dup'){const n=JSON.parse(JSON.stringify(m));n.id=uid();n.name+='（複製）';S.menus.push(n);save();return menus()}
+  if(a=='del'){dlg('刪除「'+esc(m.name)+'」？運動紀錄會保留。','刪除','取消').then(ok=>{if(ok){S.menus=S.menus.filter(x=>x!=m);save();menus()}});return}}
+ if(t.id=='tp'){T.paused?resumeT():pauseT();return paint()}
+ if(t.id=='tsd'){S.snd=S.snd===false;save();t.textContent=S.snd===false?'🔇':'🔊';return}
+ if(t.id=='ts')return next();
+ if(t.id=='te'){pauseT();paint();dlg(esc(pick(Q.early))+'<br><span class="mut">提前結束也算一次運動，要記錄嗎？</span>','記錄並結束','繼續運動').then(ok=>ok?finish(true):resumeT());return}
+ if(t.id=='tdone'){stopTimer();return go('home')}
+ if(t.id=='gm'||t.id=='gp'){S.goal=Math.min(7,Math.max(1,S.goal+(t.id=='gp'?1:-1)));save();return goal()}
+ if(t.dataset.l){S.logs=S.logs.filter(l=>l.id!=t.dataset.l);save();return goal()}
+ if(t.id=='cp'){copyBk();return}
+ if(t.id=='im'){const v=$('#bk').value.trim();return v?doImport(v):$('#fi').click()}
+ /* form */
+ if(t.dataset.addrow){D.sec[t.dataset.addrow].push({n:'',w:45,r:15});return renderForm()}
+ if(t.dataset.cp){const[k,i]=t.dataset.cp.split(':');D.sec[k].splice(+i+1,0,{...D.sec[k][+i]});return renderForm()}
+ if(t.dataset.rm){const[k,i]=t.dataset.rm.split(':');D.sec[k].splice(+i,1);return renderForm()}
+ if(t.id=='fc')return $('#ov-form').classList.remove('on');
+ if(t.id=='fs'){D.name=$('#fn').value.trim();D.tag=$('#ft').value.trim();if(!D.name)return dlg('請先填寫菜單名稱');
+  PH.forEach(([k])=>D.sec[k]=D.sec[k].filter(e=>e.n.trim()));if(!PH.some(([k])=>D.sec[k].length))return dlg('至少新增一個動作');
+  const isNew=D._new;delete D._new;if(isNew)S.menus.push(D);else S.menus=S.menus.map(x=>x.id==D.id?D:x);save();$('#ov-form').classList.remove('on');return go('menus')}
+});
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.id=='qs'){qs=t.value;return list()}
+ if(t.id=='pick')return;
+ if(t.dataset.hr){const l=S.logs.find(x=>x.id==t.dataset.hr),v=Math.round(+t.value);if(l){v>0?l.hr=v:delete l.hr;save()}return}
+ if(t.dataset.k&&D){const r=D.sec[t.dataset.p][+t.dataset.i];r[t.dataset.k]=t.dataset.k=='n'?t.value:Math.max(0,+t.value||0);tots()}
+ if(t.id=='fn')D.name=t.value;if(t.id=='ft')D.tag=t.value});
+document.addEventListener('change',e=>{const t=e.target;
+ if(t.id=='pick'){selMenu=t.value;home()}
+ if(t.id=='fi'&&t.files[0]){const r=new FileReader();r.onload=()=>doImport(String(r.result));r.readAsText(t.files[0]);t.value=''}});
+document.addEventListener('keydown',e=>{if((e.key=='Enter'||e.key==' ')&&e.target.id=='hero'){e.preventDefault();newQuote();home()}});
+async function copyBk(){const j=JSON.stringify(S),ta=$('#bk');ta.value=j;let ok=false;try{await navigator.clipboard.writeText(j);ok=true}catch(e){}
+ if(!ok){try{ta.focus();ta.select();ta.setSelectionRange(0,j.length);ok=document.execCommand('copy')}catch(e){}}
+ dlg(ok?'已複製！請貼到備忘錄，或傳給自己保存。':'無法自動複製，備份文字已放在下方輸入框，請長按全選後手動複製。')}
+async function doImport(txt){let d;try{d=JSON.parse(txt);if(!Array.isArray(d.menus)||!Array.isArray(d.logs))throw 0}catch(e){return dlg('備份內容格式不正確，請確認是完整的備份文字或檔案。')}
+ if(!await dlg('匯入會取代目前所有菜單與紀錄，確定嗎？','匯入','取消'))return;S={goal:Math.min(7,Math.max(1,+d.goal||3)),menus:d.menus,logs:d.logs};save();quote='';await dlg('匯入完成');go('home')}
+let DG=null;const clr=()=>document.querySelectorAll('.ex-t,.ex-b,.sec-over').forEach(x=>x.classList.remove('ex-t','ex-b','sec-over'));
+document.addEventListener('pointerdown',e=>{const h=e.target.closest&&e.target.closest('.hd');if(!h||!D)return;e.preventDefault();const row=h.closest('.ex');DG={p:row.dataset.p,i:+row.dataset.i,row,dst:null};row.classList.add('drag');try{h.setPointerCapture(e.pointerId)}catch(x){}});
+document.addEventListener('pointermove',e=>{if(!DG)return;e.preventDefault();clr();const el=document.elementFromPoint(e.clientX,e.clientY),ex=el&&el.closest('.ex'),sec=el&&el.closest('[data-sec]');DG.dst=null;
+ if(ex&&ex!=DG.row){const r=ex.getBoundingClientRect(),after=e.clientY>r.top+r.height/2;ex.classList.add(after?'ex-b':'ex-t');DG.dst={p:ex.dataset.p,i:+ex.dataset.i+(after?1:0)}}
+ else if(!ex&&sec){sec.classList.add('sec-over');DG.dst={p:sec.dataset.sec,i:D.sec[sec.dataset.sec].length}}
+ const sc=$('#ov-form');if(e.clientY<90)sc.scrollTop-=12;else if(e.clientY>innerHeight-90)sc.scrollTop+=12});
+const dgEnd=()=>{if(!DG)return;const g=DG;DG=null;clr();if(g.dst){const it=D.sec[g.p].splice(g.i,1)[0];let di=g.dst.i;if(g.dst.p==g.p&&g.i<di)di--;D.sec[g.dst.p].splice(di,0,it)}renderForm()};
+document.addEventListener('pointerup',dgEnd);document.addEventListener('pointercancel',dgEnd);
+home();
+</script>
+</body></html>
