@@ -70,14 +70,6 @@
 - 聲音與語音提示依瀏覽器與手機設定而定。iPhone 請確認側邊靜音鍵沒有開、媒體音量有調高；也可以按計時畫面右下角的 🔊 開關
 - 運動時畫面會盡量保持不熄滅，但不同瀏覽器的支援程度不同
 
-## 自己部署（GitHub Pages）
-
-整個專案就是一個 `index.html`：
-
-1. Fork 或下載這個 repository
-2. 到 **Settings → Pages**，Source 選 **Deploy from a branch**，Branch 選 `main`、資料夾選 `/ (root)`
-3. 等一兩分鐘，就會有自己的網址
-
 ## 技術
 
 純 HTML / CSS / JavaScript，單一檔案，無需安裝或建置。字型使用 Noto Sans TC。
