@@ -81,10 +81,7 @@ const Q={
  done:['完成了！你剛剛把承諾兌現給自己。','辛苦了，這 30 分鐘全部都算數。','身體謝謝你，明天也一起加油。','又一次，你做到了。']};
 function dlg(msg,ok,cancel){return new Promise(r=>{$('#dg').innerHTML=`<div role="dialog"><p style="margin:0 0 16px;font-size:17px;line-height:1.6">${msg}</p><div class="row">${cancel?`<button class="btn sec" id="dgn">${cancel}</button>`:''}<button class="btn" id="dgy">${ok||'好'}</button></div></div>`;$('#dg').classList.add('on');const c=v=>{$('#dg').classList.remove('on');r(v)};$('#dgy').onclick=()=>c(true);if(cancel)$('#dgn').onclick=()=>c(false)})}
 const pick=a=>a[Math.floor(Math.random()*a.length)];
-function seed(){const w=(n,w,r)=>({n,w,r});return{goal:3,logs:[],menus:[{id:uid(),name:'全身基礎 30 分',tag:'全身',sec:{
- warm:[w('原地踏步',60,15),w('肩頸繞環',60,15),w('貓牛式',60,15),w('開合跳',60,15)],
- main:['深蹲','膝蓋伏地挺身','後弓箭步','超人式','棒式','臀橋','登山者','仰臥抬腿','椅子撐體','側棒式'].map(n=>w(n,90,30)),
- cool:[w('兒童式',50,10),w('大腿前側伸展',50,10),w('胸口開展',50,10),w('坐姿前彎',50,10),w('腹式呼吸',50,10)]}}]}}
+function seed(){return{goal:3,logs:[],menus:[{id:uid(),name:"全身功能性訓練（初階）",tag:"全身",sec:{"warm":[{"n":"娃娃蹲","w":45,"r":15},{"n":"世界最好的伸展+胸椎活動","w":45,"r":15},{"n":"左右交替側蹲","w":45,"r":15},{"n":"抱膝上提單腿屈髖","w":45,"r":15},{"n":"平板跨步","w":30,"r":30}],"main":[{"n":"深蹲","w":45,"r":15},{"n":"寬距深蹲","w":45,"r":15},{"n":"螃蟹蹲🦀","w":45,"r":15},{"n":"提踵深蹲","w":45,"r":15},{"n":"弓步交替蹲","w":45,"r":15},{"n":"平板撐","w":45,"r":15},{"n":"跪姿伏地挺身","w":45,"r":15},{"n":"俯臥W字","w":45,"r":15},{"n":"捲腹","w":45,"r":15},{"n":"反向平板","w":45,"r":15},{"n":"深蹲","w":45,"r":15},{"n":"寬距深蹲","w":45,"r":15},{"n":"螃蟹蹲🦀","w":45,"r":15},{"n":"提踵深蹲","w":45,"r":15},{"n":"弓步交替蹲","w":45,"r":15},{"n":"平板撐","w":45,"r":15},{"n":"跪姿伏地挺身","w":45,"r":15},{"n":"俯臥W字","w":45,"r":15},{"n":"捲腹","w":45,"r":15},{"n":"反向平板","w":45,"r":15}],"cool":[{"n":"上犬式","w":30,"r":0},{"n":"下犬式","w":30,"r":0},{"n":"弓步腿前側伸展","w":30,"r":0},{"n":"俯身腿後側伸展","w":30,"r":0},{"n":"弓步腿前側伸展","w":30,"r":0},{"n":"俯身腿後側伸展","w":30,"r":0},{"n":"鴿式（右）","w":30,"r":0},{"n":"鴿式（左）","w":30,"r":0},{"n":"束腳式","w":30,"r":0},{"n":"嬰兒式","w":30,"r":0}]}}]}}
 function load(){try{const d=JSON.parse(localStorage.getItem(K));if(d&&Array.isArray(d.menus))return d}catch(e){}return seed()}
 let S=load();const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 const secTot=l=>l.reduce((a,e)=>a+(+e.w||0)+(+e.r||0),0),menuTot=m=>PH.reduce((a,[k])=>a+secTot(m.sec[k]),0);
